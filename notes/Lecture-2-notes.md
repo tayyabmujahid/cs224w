@@ -22,15 +22,23 @@ Strongly Connected Components
 
   
 
-##### Lecture 2.1
+### Lecture 2.1
 
-###### Machine Learning Tasks
+#### Machine Learning Tasks
 
 - Node level predictions tasks
 - link level prediction task
 - graph level prediction task
 
-##### Traditional ML Pipeline
+#### Traditional ML Pipeline
+
+
+
+ ##### Steps in Traditional ML pipelines
+
+**A. Feature Design**
+
+- Take data points i.e. nodes/links/graphs and represent them with vectors of features
 
 Designing proper features for nodes/links/graphs
 
@@ -42,11 +50,32 @@ Designing proper features for nodes/links/graphs
 
 in summary i. structural features and ii. feature describing the attributes and properties of the nodes
 
- **Two steps in Traditinal ML pipelines:**
 
-- Take data points i.e. nodes/links/graphs and represent them with vectors of features
-- then train a classical ML model like SVM, Random Forest, NN etc
-- Apply  the model to a new node/link/graph's feature s to make a prediction
 
-##### Feature Design
+**B. Train a classical ML model **
+
+like SVM, Random Forest, ANN etc on the nodes/links/graphs (objects converted to feature vectors)
+
+**C. Inference:** 
+
+Apply  the model to a new node/link/graph's features to make a prediction
+
+##### A. Feature Design
+
+Goal : how to make the predictions for a set of objects
+
+Design Choices: 
+
+- Features: *d*- dimensional vectors
+- Objects: Nodes,edges sets of nodes or entire graphs
+- Objective function:
+  - depending on the task
+
+Problem Formulation:
+
+Given : $G = (V,E)$ 
+
+Learn a function : $f:V \rightarrow \mathbb{R} $
+
+​	
 
