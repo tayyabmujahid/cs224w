@@ -32,8 +32,6 @@ Strongly Connected Components
 
 #### Traditional ML Pipeline
 
-
-
  ##### Steps in Traditional ML pipelines
 
 **A. Feature Design**
@@ -56,7 +54,7 @@ in summary i. structural features and ii. feature describing the attributes and 
 
 like SVM, Random Forest, ANN etc on the nodes/links/graphs (objects converted to feature vectors)
 
-**C. Inference:** 
+**C. Inference:**  
 
 Apply  the model to a new node/link/graph's features to make a prediction
 
@@ -77,5 +75,89 @@ Given : $G = (V,E)$
 
 Learn a function : $f:V \rightarrow \mathbb{R} $
 
-​	
+learn a function $f$ that would for example predict the age of each node in a social network
 
+ ###### Node Level Features and Tasks
+
+Semi supervised case:
+
+-  Node Classification : Given a network with  few nodes which are labelled(colors for eg). Given a color of nodes predict the color or the unlabeled (uncolored) node.
+
+- Characterize the structure and position of  a node in the network
+
+  this can be done in the following ways
+
+  - node degree
+  - node centrality
+  - clustering coefficient
+  - graphlets
+
+  **Node Degree** ($k_v$)
+
+  - the degree $k_v$ of a node v is the number of edges(neighbouring nodes) the node has
+
+  - Drawback is that it treats all the neighbours equally 
+
+    nodes with same degree are treated similarly even if they are in different parts of the network
+
+   **Node Centrality** ($c_v$)
+
+  - node degree does not capture a nodes importance 
+
+  - node centrality measures captures how important the node is in the graph
+
+    - <u>*Eigen vector centrality*</u>- page rank algorithm
+
+      a node $v$ is important if surrounded by important neighbours nodes $u$
+
+      $c_v= 1/\lambda \Sigma_{u} c_u \Leftrightarrow \lambda \bold c= \bold A \bold c$     
+
+      where $\bold A$ is the adjacency matrix and $\bold c$ is centrality vector
+
+      The largest eigenvalue $\lambda_{max}$ is always positive and unique
+
+      The leading eigen vector is used $\bold c_{max}$ is used for centrality
+
+    - *<u>Betweenness centrality</u>* 
+
+      node is important if it lies  on many shortest paths between other nodes
+
+      if a node is an important transit hub
+
+      $c_v = \sum{(number~of~paths~between~s~and ~ t ~ that~ contains v)/(total~ number~ of~ paths~ between~ s ~and ~t)}$
+
+      
+
+    - *<u>Closeness centrality</u>* - how close a node is to the center of the network etc...
+
+      a node is important if it has small shortest path lengths to all other nodes
+
+      $c_v = 1/(\sum shortest ~path  ~between~ u ~and ~v)$
+
+  **Clustering Coefficient**
+
+  how connected the neighbours of $v$  are 
+
+  $e_v = (edges ~among ~neighbour~ nodes)/{k_v \choose 2}$
+
+  
+
+  **Graphlets**
+
+  clustering coefficient counts the number of triangles of the ego-network(the network that is degree 1 neighbourhood)
+
+  graphlet is rooted, connected and non-isomorphic sub-graph
+
+  Graphlet Degree Vector
+
+  GDV provide a measure of  nodes local network topology
+
+- **Summary**
+
+  - Node degree and Node Centrality are **importance based features**
+
+    eg. application : Predicting celebrity users in a social network, predicting influential nodes in a graph
+
+  - **Structure based features**: Node degree, clustering coefficient,  graphlet degree vector
+
+    eg. application : predictin protein functionality  in a protein-protein interaction network.
